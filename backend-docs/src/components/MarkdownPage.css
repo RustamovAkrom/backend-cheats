@@ -1,0 +1,50 @@
+.markdown-body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.7;
+  color: #333;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3 {
+  border-bottom: 2px solid #eee;
+  padding-bottom: 6px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  border-radius: 6px;
+  margin: 10px 0;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+
+.markdown-body table, .markdown-body th, .markdown-body td {
+  border: 1px solid #ccc;
+}
+
+.markdown-body th, .markdown-body td {
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.markdown-body a {
+  color: #007acc;
+  text-decoration: none;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}
