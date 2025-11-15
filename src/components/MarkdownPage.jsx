@@ -15,7 +15,7 @@ const slugify = (text = '') =>
   String(text)
     .toLowerCase()
     .trim()
-    .replace(/[^\w\s-]/g, '')
+    .replace(/[^\p{L}\p{N}\s-]/gu, '') // \p{L} = любые буквы (включая кириллицу), \p{N} = цифры
     .replace(/\s+/g, '-');
 
 // extract plain text from React children (robust)
@@ -73,7 +73,7 @@ const MarkdownViewer = React.memo(function MarkdownViewer({ content }) {
     a: ({ node, ...props }) => {
       const href = props.href || '';
       if (href.startsWith('#')) {
-        const id = href.slice(1);
+        const id = slugify(decodeURIComponent(href.slice(1)));
         const handle = (e) => {
           e.preventDefault();
           const el = document.getElementById(id);
@@ -86,6 +86,7 @@ const MarkdownViewer = React.memo(function MarkdownViewer({ content }) {
           </a>
         );
       }
+
       return (
         <a {...props} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-300 hover:underline">
           {props.children}
