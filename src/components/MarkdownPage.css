@@ -1,50 +1,126 @@
+/* Адаптивная Markdown страница с Tailwind и dark mode */
 .markdown-body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.7;
-  color: #333;
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 30px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: var(--text-color);
+  background-color: var(--card-bg);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: background-color 0.3s, color 0.3s;
+  overflow-x: auto; /* горизонтальная прокрутка для таблиц/кода */
+  word-break: break-word;
+  padding: 1rem;
+  width: 100%;
+  max-width: 100%;
 }
 
+/* Заголовки */
 .markdown-body h1,
 .markdown-body h2,
-.markdown-body h3 {
-  border-bottom: 2px solid #eee;
-  padding-bottom: 6px;
-  margin-top: 30px;
-  margin-bottom: 15px;
+.markdown-body h3,
+.markdown-body h4 {
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  word-break: break-word;
+  font-weight: 600;
 }
 
+/* Списки */
+.markdown-body ul,
+.markdown-body ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-body li {
+  margin: 0.25rem 0;
+  line-height: 1.6;
+}
+
+/* Ссылки */
+.markdown-body a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+.markdown-body a:hover {
+  text-decoration: underline;
+}
+
+/* Изображения */
 .markdown-body img {
   max-width: 100%;
-  border-radius: 6px;
-  margin: 10px 0;
+  height: auto;
+  border-radius: 0.375rem;
+  margin: 0.5rem 0;
 }
 
+/* Таблицы */
 .markdown-body table {
   width: 100%;
   border-collapse: collapse;
-  margin: 15px 0;
+  margin: 1rem 0;
+  display: block;
+  overflow-x: auto;
 }
 
-.markdown-body table, .markdown-body th, .markdown-body td {
-  border: 1px solid #ccc;
-}
-
-.markdown-body th, .markdown-body td {
-  padding: 8px 12px;
+.markdown-body th,
+.markdown-body td {
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 0.75rem;
   text-align: left;
+  white-space: nowrap;
 }
 
-.markdown-body a {
-  color: #007acc;
-  text-decoration: none;
+/* Code blocks */
+.markdown-pre {
+  margin: 1rem 0;
+  border-radius: 0.375rem;
+  overflow-x: auto;
 }
 
-.markdown-body a:hover {
-  text-decoration: underline;
+/* Dark mode */
+html.dark .markdown-body {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+html.dark .markdown-body h1,
+html.dark .markdown-body h2,
+html.dark .markdown-body h3,
+html.dark .markdown-body h4 {
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+html.dark .markdown-body a {
+  color: var(--link-color);
+}
+
+/* Адаптивные шрифты */
+@media (min-width: 640px) {
+  .markdown-body {
+    padding: 1.5rem;
+  }
+}
+@media (min-width: 768px) {
+  .markdown-body {
+    max-width: 720px;
+    padding: 2rem;
+    font-size: 1rem;
+  }
+}
+@media (min-width: 1024px) {
+  .markdown-body {
+    max-width: 900px;
+    font-size: 1.05rem;
+  }
+}
+@media (min-width: 1280px) {
+  .markdown-body {
+    max-width: 1080px;
+    font-size: 1.1rem;
+  }
 }

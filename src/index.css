@@ -1,44 +1,46 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* Global variables (can be tweaked) */
-:root{
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Root variables */
+:root {
   --main-bg: #ffffff;
   --text-color: #111827;
   --link-color: #2563eb;
+  --border-color: #e5e7eb;
+  --card-bg: #f9fafb;
 }
-[data-theme='dark'] {
+
+html.dark {
   --main-bg: #0b1220;
   --text-color: #e6eef8;
   --link-color: #60a5fa;
+  --border-color: #1f2937;
+  --card-bg: #111827;
 }
 
-html, body, #root {
-  height: 100%;
-}
-
-/* Base body styles using Tailwind utilities via @apply */
 body {
-  @apply bg-white dark:bg-[#0b1220] text-gray-900 dark:text-gray-100 transition-colors duration-300;
+  @apply transition-colors duration-300;
   background-color: var(--main-bg);
   color: var(--text-color);
 }
 
-/* Make Markdown images and tables responsive */
-.markdown-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 0.5rem;
-}
-
-/* Ensure code blocks are scrollable on small screens */
-.markdown-pre {
-  overflow: auto;
-  border-radius: 0.5rem;
-}
-
-/* prose tweaks */
-.prose a {
+/* Ссылки */
+a {
   color: var(--link-color);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Prose списки */
+.prose ul,
+.prose ol {
+  list-style-type: initial !important;
+  margin-left: 1.25rem !important;
+}
+
+.prose li {
+  margin: 0.25rem 0;
 }
