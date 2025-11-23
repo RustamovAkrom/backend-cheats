@@ -160,7 +160,7 @@ export default function MarkdownPage({ filePath }: MarkdownPageProps) {
   }, [query, headings]);
 
   return (
-    <div className="w-full px-4 py-6 md:px-10">
+    <div className="w--10">
       {/* Search Bar */}
       <div className="max-w-3xl mx-auto mb-6">
         <div className="flex items-center gap-3">
@@ -201,9 +201,9 @@ export default function MarkdownPage({ filePath }: MarkdownPageProps) {
       </div>
 
       {/* Markdown Content */}
-<div className="markdown-body mx-auto mt-6 px-4 sm:px-6 md:px-8">
-  <MarkdownViewer content={content} />
-</div>
+        <div className="markdown-body mx-auto mt-6 px-4 sm:px-6 md:px-8">
+          <MarkdownViewer content={content} />
+        </div>
 
     </div>
   );

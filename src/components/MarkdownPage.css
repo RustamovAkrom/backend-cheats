@@ -1,4 +1,7 @@
-/* Адаптивная Markdown страница с Tailwind и dark mode */
+/* =========================== */
+/* Markdown Page Styling - Tailwind & Dark Mode */
+/* =========================== */
+
 .markdown-body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.7;
@@ -7,32 +10,53 @@
   border-radius: 0.5rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   transition: background-color 0.3s, color 0.3s;
-  overflow-x: auto; /* горизонтальная прокрутка для таблиц/кода */
+  overflow-x: auto;
   word-break: break-word;
   padding: 1rem;
   width: 100%;
   max-width: 100%;
 }
 
+/* =========================== */
 /* Заголовки */
 .markdown-body h1,
 .markdown-body h2,
 .markdown-body h3,
-.markdown-body h4 {
-  border-bottom: 2px solid var(--border-color);
-  padding-bottom: 0.3rem;
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  color: var(--text-color);
+  font-weight: 600;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
-  color: var(--text-color);
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid var(--border-color);
   word-break: break-word;
-  font-weight: 600;
 }
 
+/* Ссылки в заголовках */
+.markdown-body h1 a,
+.markdown-body h2 a,
+.markdown-body h3 a,
+.markdown-body h4 a,
+.markdown-body h5 a,
+.markdown-body h6 a {
+  text-decoration: none;
+  color: inherit;
+}
+.markdown-body h1 a:hover,
+.markdown-body h2 a:hover,
+.markdown-body h3 a:hover {
+  color: var(--link-color);
+}
+
+/* =========================== */
 /* Списки */
 .markdown-body ul,
 .markdown-body ol {
   margin-left: 1.5rem;
   margin-bottom: 1rem;
+  padding-left: 1rem;
 }
 
 .markdown-body li {
@@ -40,15 +64,31 @@
   line-height: 1.6;
 }
 
+/* =========================== */
+/* Blockquote */
+.markdown-body blockquote {
+  border-left: 4px solid var(--border-color);
+  padding-left: 1rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  margin: 1rem 0;
+  font-style: italic;
+  background-color: rgba(0,0,0,0.02);
+  border-radius: 0.25rem;
+}
+
+/* =========================== */
 /* Ссылки */
 .markdown-body a {
   color: var(--link-color);
   text-decoration: none;
+  transition: color 0.3s;
 }
 .markdown-body a:hover {
   text-decoration: underline;
 }
 
+/* =========================== */
 /* Изображения */
 .markdown-body img {
   max-width: 100%;
@@ -57,6 +97,7 @@
   margin: 0.5rem 0;
 }
 
+/* =========================== */
 /* Таблицы */
 .markdown-body table {
   width: 100%;
@@ -74,31 +115,53 @@
   white-space: nowrap;
 }
 
+/* =========================== */
 /* Code blocks */
-.markdown-pre {
-  margin: 1rem 0;
+.markdown-body pre {
+  background-color: var(--code-bg, #f5f5f5);
+  color: var(--code-color, #333);
   border-radius: 0.375rem;
+  padding: 1rem;
   overflow-x: auto;
+  margin: 1rem 0;
+  font-size: 0.9rem;
 }
 
-/* Dark mode */
+.markdown-body code {
+  background-color: var(--code-bg, #f5f5f5);
+  color: var(--code-color, #333);
+  border-radius: 0.25rem;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.875rem;
+}
+
+/* =========================== */
+/* Dark Mode */
 html.dark .markdown-body {
   background-color: var(--card-bg);
   color: var(--text-color);
 }
 
-html.dark .markdown-body h1,
-html.dark .markdown-body h2,
-html.dark .markdown-body h3,
-html.dark .markdown-body h4 {
-  color: var(--text-color);
+html.dark .markdown-body blockquote {
   border-color: var(--border-color);
+  background-color: rgba(255,255,255,0.05);
 }
 
 html.dark .markdown-body a {
   color: var(--link-color);
 }
 
+html.dark .markdown-body pre {
+  background-color: #1e1e2f;
+  color: #f5f5f5;
+}
+
+html.dark .markdown-body code {
+  background-color: #2d2d42;
+  color: #f5f5f5;
+}
+
+/* =========================== */
 /* Адаптивные шрифты */
 @media (min-width: 640px) {
   .markdown-body {
