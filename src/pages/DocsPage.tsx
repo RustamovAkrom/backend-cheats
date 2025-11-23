@@ -1,23 +1,22 @@
-// DocsPage.tsx
 import { useEffect } from "react";
 import { useLoader } from "../context/LoaderContext";
 import type { PageProps } from "../types/basicTypes";
 import MarkdownPage from "../components/MarkdownPage";
 
-
 export default function DocsPage({ lang }: PageProps) {
-  const filePath = lang === "EN" ? "/README.md" : "/README_RUS.md";
   const { startLoading, stopLoading, setProgress } = useLoader();
+  const filePath = lang === "EN" ? "/README.md" : "/README_RUS.md";
 
   useEffect(() => {
     startLoading();
-    fetch(lang === "EN" ? "/README.md" : "/README_RUS.md")
+    fetch(filePath)
       .then(res => res.text())
-      .then(text => {
+      .then(() => {
+        // Можно тут обработать Markdown, если нужно
         setProgress(100);
-        stopLoading();
-      });
-  }, [lang]);
+      })
+      .finally(() => stopLoading());
+  }, [filePath, startLoading, stopLoading, setProgress]);
 
   return (
     <div className="px-4 py-6 md:px-10">
