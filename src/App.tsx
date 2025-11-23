@@ -6,14 +6,12 @@ import DocsPage from "./pages/DocsPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
 import type { Lang } from "./types/basicTypes";
-import { LoaderProvider } from "./context/LoaderContext";
 
 
 export default function App() {
   const [lang, setLang] = useState<Lang>("EN");
 
   return (
-    <LoaderProvider>
       <Router>
           <div className="flex flex-col min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
             <Header lang={lang} setLang={setLang} />
@@ -26,6 +24,5 @@ export default function App() {
             <Footer />
           </div>
       </Router>
-    </LoaderProvider>
   );
 }

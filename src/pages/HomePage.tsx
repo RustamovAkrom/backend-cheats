@@ -1,27 +1,10 @@
 // HomePage.tsx
-import { useEffect } from "react";
-import { useLoader } from "../context/LoaderContext";
 import type { PageProps } from "../types/basicTypes";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTelegramPlane } from "react-icons/fa";
 
 export default function HomePage({ lang }: PageProps) {
-  const { startLoading, stopLoading, setProgress } = useLoader();
-
-  useEffect(() => {
-    startLoading();
-    let value = 0;
-    const interval = setInterval(() => {
-      value += Math.random() * 15;
-      if (value >= 100) {
-        setProgress(100);
-        stopLoading();
-        clearInterval(interval);
-      } else setProgress(value);
-    }, 200);
-    return () => clearInterval(interval);
-  }, []);
   
   return (
     <div className="relative flex flex-col justify-center items-center text-center min-h-screen px-6 md:px-12 lg:px-24 py-12 space-y-10 overflow-hidden
